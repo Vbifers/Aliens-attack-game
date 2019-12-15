@@ -13,6 +13,7 @@ class Ship():
 		self.moving_right = False
 		self.moving_left = False
 		self.center=float(self.rect.centerx)
+		
 	def update(self):
 		"""update ship position"""
 		if self.moving_right and self.rect.right<self.screen_rect.right:
@@ -22,7 +23,11 @@ class Ship():
 			 
 			self.center-=self.settings.speed
 			self.rect.centerx=self.center
+			
 	def blitme(self):
 		self.screen.blit(self.image, self.rect)
+		
+	def center_ship(self):
+		self.rect.centerx = self.screen_rect.centerx
 			
 		
