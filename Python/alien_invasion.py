@@ -5,8 +5,10 @@ import game_functions as gf
 from pygame.sprite import Group
 from game_stats import GameStats
 from button import Button
+from score_board import ScoreBoard
 
 def run_game():
+	"""main feature"""
 	pygame.init()
 	stn = Settings()
 	screen=pygame.display.set_mode((stn.width,stn.height))
@@ -22,12 +24,14 @@ def run_game():
 	stats = GameStats(stn)
 	#create button
 	button = Button(screen, stn, 'Play')
+	#create scoreboard
+	sb = ScoreBoard(screen, stn, stats)
 	while True:
-		gf.check_events(ship, stn, screen, bullets, stats, button, aliens)
+		gf.check_events(ship, stn, screen, bullets, stats, button, aliens, sb)
 		if stats.game_active:
 			ship.update()
-			gf.update_bullets(bullets, aliens, stn, screen, ship)
-			gf.update_aliens(stn, aliens, ship, stats, screen, bullets)	
-		gf.update_screen(stn, screen, ship, bullets, aliens, stats, button)
+			gf.update_bullets(bullets, aliens, stn, screen, ship, stats, sb)
+			gf.update_aliens(stn, aliens, ship, stats, screen, bullets, sb)	
+		gf.update_screen(stn, screen, ship, bullets, aliens, stats, button, sb)
 					
 run_game()
