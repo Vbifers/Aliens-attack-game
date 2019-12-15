@@ -29,7 +29,6 @@ class GameStats():
 	def save_high_record(self):
 		"""save high level from txt file"""
 		record = 0
-		print('here')
 		try:
 			filepath ='data\high_record.txt'
 			with open(filepath,'w') as f:

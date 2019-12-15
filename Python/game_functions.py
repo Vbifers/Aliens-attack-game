@@ -120,7 +120,7 @@ def check_bullet_alien_collision(bullets, settings, screen, aliens, ship, stats,
 		sb.prep_level()
 		create_fleet(settings, screen, aliens, ship) 
 		ship.center_ship()		
-		sleep(0.5)
+		sleep(0.2)
 		
 def ship_hit(stats, settings, bullets, aliens, sb):
 	if stats.ship_left>0:
